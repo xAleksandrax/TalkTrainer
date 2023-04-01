@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".LogIn">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signin"
+        android:text="Log in"
+        android:textAlignment="center"
+        android:textColor="#FF8F63"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:layout_marginTop="35dp"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        app:srcCompat="@drawable/login2"
+        android:layout_height="177dp"
+        android:layout_below="@id/signin"
+        android:layout_marginTop="12dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:backgroundTint="#ECC8B9"
+        android:layout_below="@id/imageView2"
+        android:layout_margin="20dp"
+        android:hint="username"
+        android:padding="20dp"
+        android:drawableStart="@drawable/baseline_person_24"
+        android:drawablePadding="15dp"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:backgroundTint="#ECC8B9"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:drawablePadding="15dp"
+        android:hint="password"
+        android:layout_margin="20dp"
+        android:padding="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_button"
+        android:layout_below="@id/password"
+        android:text="LOG IN"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:backgroundTint="#FF8F63"
+        android:textStyle="bold"
+        android:textColor="#ECC8B9"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:text="Don't have an account?"
+        android:textAlignment="center"
+        android:layout_below="@id/login_button"
+        android:textColor="#ECC8B9"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+
+</RelativeLayout>

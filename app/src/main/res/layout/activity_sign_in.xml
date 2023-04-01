@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".SignIn">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signin"
+        android:text="Sign in"
+        android:textAlignment="center"
+        android:textColor="#FF8F63"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:layout_marginTop="35dp"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="141dp"
+        android:layout_below="@id/signin"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/login"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:backgroundTint="#ECC8B9"
+        android:layout_below="@id/imageView"
+        android:layout_margin="10dp"
+        android:hint="Username"
+        android:padding="20dp"
+        android:drawableStart="@drawable/baseline_person_24"
+        android:drawablePadding="15dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:layout_below="@id/username"
+        android:backgroundTint="#ECC8B9"
+        android:layout_margin="10dp"
+        android:hint="Password"
+        android:padding="20dp"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:drawablePadding="15dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirm_password"
+        android:layout_below="@id/password"
+        android:backgroundTint="#ECC8B9"
+        android:layout_margin="10dp"
+        android:hint="Confirm Password"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/baseline_lock_24"
+        android:drawablePadding="15px"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signin_button"
+        android:layout_below="@id/confirm_password"
+        android:text="SIGN IN"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:backgroundTint="#FF8F63"
+        android:textStyle="bold"
+        android:textColor="#ECC8B9"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:text="Already have an account?"
+        android:textAlignment="center"
+        android:layout_below="@id/signin_button"
+        android:textColor="#ECC8B9"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+
+</RelativeLayout>
