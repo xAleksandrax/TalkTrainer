@@ -18,11 +18,10 @@
         android:id="@+id/welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:fontFamily="@font/alkatra"
         android:text="Welcome"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
+        android:textColor="#ECC8B9"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/talkTrainer"
@@ -32,7 +31,8 @@
         android:textSize="48sp"
         android:textStyle="bold"
         android:textColor="#FF8F63"
-        android:letterSpacing="-0.05"/>
+        android:letterSpacing="-0.05"
+        android:fontFamily="@font/alkatra"/>
 
     <Button
         android:id="@+id/login_button"
@@ -42,9 +42,10 @@
         android:text="LOG IN"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:backgroundTint="#FF8F63"
-        android:background="@drawable/button_background"/>
+        android:background="@drawable/button_background"
+        android:elevation="4dp"/>
 
     <Button
         android:id="@+id/signin_button"
@@ -54,8 +55,11 @@
         android:text="SIGN IN"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:backgroundTint="#FF8F63"
-        android:background="@drawable/button_background" />
+        android:background="@drawable/button_background"
+        android:elevation="4dp"/>
+
+
 
 </LinearLayout>
