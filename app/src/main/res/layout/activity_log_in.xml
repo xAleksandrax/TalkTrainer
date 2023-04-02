@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/signin"
-        android:text="Log in"
+        android:text="Login"
         android:textAlignment="center"
         android:textColor="#FF8F63"
         android:textSize="35sp"
         android:textStyle="bold"
-        android:layout_marginTop="35dp"/>
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/mainfont"/>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -30,42 +31,48 @@
         tools:layout_editor_absoluteY="2dp" />
 
     <EditText
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
-        android:backgroundTint="#ECC8B9"
         android:layout_below="@id/imageView2"
-        android:layout_margin="20dp"
-        android:hint="username"
-        android:padding="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#ECC8B9"
         android:drawableStart="@drawable/baseline_person_24"
         android:drawablePadding="15dp"
-        />
+        android:hint="username"
+        android:inputType="textPersonName"
+        android:padding="20dp" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/username"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="#ECC8B9"
         android:drawableStart="@drawable/baseline_lock_24"
         android:drawablePadding="15dp"
         android:hint="password"
-        android:layout_margin="20dp"
+        android:inputType="textPassword"
         android:padding="20dp" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/login_button"
         android:layout_below="@id/password"
-        android:text="LOG IN"
+        android:text="LOGIN"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:backgroundTint="#FF8F63"
         android:textStyle="bold"
-        android:textColor="#ECC8B9"
-        />
+        android:textColor="@color/white" />
 
     <TextView
         android:layout_width="match_parent"
