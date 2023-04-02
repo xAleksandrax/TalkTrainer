@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class LogIn : AppCompatActivity() {
@@ -22,6 +23,12 @@ class LogIn : AppCompatActivity() {
         editUser = findViewById(R.id.username)
         editPword = findViewById(R.id.password)
         dbh = DBHelper(this)
+
+        val registerTextView = findViewById<TextView>(R.id.register)
+        registerTextView.setOnClickListener {
+            val intent = Intent(this, SignIn::class.java)
+            startActivity(intent)
+        }
 
         loginBtn.setOnClickListener{
             val useredtxt = editUser.text.toString()

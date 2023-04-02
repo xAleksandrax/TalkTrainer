@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TalkTrainer</string>
+    <string name="login_title">
+        Already have an account? <font color="@color/white"><b>Login</b></font>
+    </string>
+    <string name="register_title">
+        Don\'t have an account? <font color="@color/white"><b>Register</b></font>
+    </string>
 </resources>

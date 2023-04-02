@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 
 class SignIn : AppCompatActivity() {
@@ -25,6 +26,12 @@ class SignIn : AppCompatActivity() {
         cpword = findViewById(R.id.confirm_password1)
         signupBtn = findViewById(R.id.signin_button)
         db = DBHelper(this)
+
+        val loginTextView = findViewById<TextView>(R.id.login)
+        loginTextView.setOnClickListener {
+            val intent = Intent(this, LogIn::class.java)
+            startActivity(intent)
+        }
 
         signupBtn.setOnClickListener{
             val unametxt = uname.text.toString()
