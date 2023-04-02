@@ -1,9 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FirstPage">
+
+    <!-- Przycisk 1 -->
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:textColor="@color/white"
+        android:text="Learn"
+        android:textSize="25dp"
+        android:fontFamily="@font/mainfont"
+        android:background="@drawable/game_image"
+        android:width="200dp"
+        android:height="200dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="parent">
+    </Button>
+
+
+    <!-- Przycisk 2 -->
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:text="Study"
+        android:textSize="25dp"
+        android:fontFamily="@font/mainfont"
+        android:background="@drawable/game_image"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toRightOf="@+id/button1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Przycisk 3 -->
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:text="Play"
+        android:textSize="25dp"
+        android:fontFamily="@font/mainfont"
+        android:background="@drawable/game_image"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
+
+    <!-- Przycisk 4 -->
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:text="Ranking"
+        android:textSize="25dp"
+        android:fontFamily="@font/mainfont"
+        android:background="@drawable/game_image"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintLeft_toRightOf="@+id/button3"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <ImageView
+        android:id="@+id/my_image_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/adventure"
+        app:layout_constraintTop_toBottomOf="@id/button4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
