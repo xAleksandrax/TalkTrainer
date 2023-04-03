@@ -17,6 +17,7 @@ class LogIn : AppCompatActivity() {
     private lateinit var dbh: DBHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_log_in)
 
         loginBtn = findViewById(R.id.login_button)
@@ -42,6 +43,7 @@ class LogIn : AppCompatActivity() {
                 if (checkUser==true){
                     Toast.makeText(this,"Login successful!",Toast.LENGTH_SHORT).show()
                     val intent = Intent(applicationContext, FirstPage::class.java)
+                    intent.putExtra("username", useredtxt)
                     startActivity(intent)
                 }
                 else{

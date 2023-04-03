@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">TalkTrainer</string>
     <string name="login_title">
-        Already have an account? <font color="@color/white"><b>Login</b></font>
+        Already have an account? <font> <b>Login</b></font>
     </string>
     <string name="register_title">
-        Don\'t have an account? <font color="@color/white"><b>Register</b></font>
+        Don\'t have an account? <font> <b>Register</b></font>
     </string>
+    <string name="hello">
+    <font color="@color/black"><b>HI</b> </font> %s!
+</string>
 </resources>

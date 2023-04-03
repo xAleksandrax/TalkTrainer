@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnSignUp: Button;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_main)
 
         btnLogIn = findViewById(R.id.login_button)
