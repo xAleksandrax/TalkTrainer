@@ -73,7 +73,6 @@ class AddFlashcard : AppCompatActivity() {
         polishEnglishTranslator.downloadModelIfNeeded(conditions)
             .addOnSuccessListener {
                 polishEnglishTranslator.translate(sourceText)
-//                        sprawdzac czy slowko juz jest
                     .addOnSuccessListener { translatedText ->
                         val flashcard = Flashcard(
                             title = titleFlashcard.text.toString(),
@@ -82,8 +81,19 @@ class AddFlashcard : AppCompatActivity() {
                             userId = 1 // id użytkownika, którego dotyczy fiszka
                         )
                         lifecycleScope.launch {
-                            val flashcardDao = withContext(Dispatchers.IO) {
-                                db.flashcardDao().insertFlashcard(flashcard)
+                            val flashcards = withContext(Dispatchers.IO) {
+                                db.flashcardDao().getFlashcardsForUser(1)
+                            }
+                            var repeating = false
+                            for (flash in flashcards) {
+                                if (flashcard.word == flash.word) {
+                                    repeating = true
+                                }
+                            }
+                            if (!repeating) {
+                                withContext(Dispatchers.IO) {
+                                    db.flashcardDao().insertFlashcard(flashcard)
+                                }
                             }
                         }
 
