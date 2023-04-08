@@ -2,13 +2,13 @@ package com.example.talktrainer
 
 import android.app.ProgressDialog
 import android.nfc.Tag
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import com.google.mlkit.common.model.DownloadConditions
@@ -39,7 +39,7 @@ class AddFlashcard : AppCompatActivity() {
         addBtn = findViewById(R.id.add_button)
         db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "mydb").build()
 
-        addBtn.setOnClickListener{
+        addBtn.setOnClickListener {
             validateData()
         }
     }
@@ -52,65 +52,91 @@ class AddFlashcard : AppCompatActivity() {
     private fun validateData() {
         sourceText = wordToTranslate.text.toString().trim()
 
-        if(sourceText.isEmpty()){
-            Toast.makeText(this,"Add word", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            startTranslation()
+        if (sourceText.isEmpty()) {
+            Toast.makeText(this, "Add word", Toast.LENGTH_SHORT).show()
+        } else {
+            addWordsToFlashcard()
         }
     }
 
-    private fun startTranslation() {
-        val options = TranslatorOptions.Builder()
-            .setSourceLanguage(TranslateLanguage.POLISH)
-            .setTargetLanguage(TranslateLanguage.ENGLISH)
-            .build()
+    private fun addWordsToFlashcard() {
+        val flashcardTitle = titleFlashcard.text.toString()
+        lifecycleScope.launch {
+            val existingFlashcard = withContext(Dispatchers.IO) {
+                db.flashcardDao().getFlashcardByTitle(flashcardTitle)
+            }
+            if (existingFlashcard != null) {
+                // Flashcard o danej nazwie już istnieje - dodaj słowa do istniejącej fiszki
+                val flashcardId = existingFlashcard.id
+                startTranslation(flashcardId)
+            } else {
+                // Tworzenie nowej fiszki i dodanie do niej słów
+                val flashcard = Flashcard(
+                    title = flashcardTitle, userId = 1 // id użytkownika, którego dotyczy fiszka
+                )
+                lifecycleScope.launch {
+                    val flashcardId = withContext(Dispatchers.IO) {
+                        db.flashcardDao().insertFlashcard(flashcard).toInt()
+                    }
+                    startTranslation(flashcardId)
+                }
+            }
+
+        }
+    }
+
+    private fun startTranslation(flashcardId: Int) {
+        val sourceText = wordToTranslate.text.toString().trim()
+        val options = TranslatorOptions.Builder().setSourceLanguage(TranslateLanguage.POLISH)
+            .setTargetLanguage(TranslateLanguage.ENGLISH).build()
         val polishEnglishTranslator = Translation.getClient(options)
 
-        var conditions = DownloadConditions.Builder()
-            .requireWifi()
-            .build()
-        polishEnglishTranslator.downloadModelIfNeeded(conditions)
-            .addOnSuccessListener {
+        var conditions = DownloadConditions.Builder().requireWifi().build()
+        polishEnglishTranslator.downloadModelIfNeeded(conditions).addOnSuccessListener {
                 polishEnglishTranslator.translate(sourceText)
                     .addOnSuccessListener { translatedText ->
-                        val flashcard = Flashcard(
-                            title = titleFlashcard.text.toString(),
-                            word = sourceText,
-                            translation = translatedText,
-                            userId = 1 // id użytkownika, którego dotyczy fiszka
-                        )
+                        // Sprawdzenie, czy słowo już istnieje w bazie danych dla danej fiszki
                         lifecycleScope.launch {
-                            val flashcards = withContext(Dispatchers.IO) {
-                                db.flashcardDao().getFlashcardsForUser(1)
+                            val existingWord = withContext(Dispatchers.IO) {
+                                db.flashcardDao().getWordForFlashcard(flashcardId, sourceText)
                             }
-                            var repeating = false
-                            for (flash in flashcards) {
-                                if (flashcard.word == flash.word) {
-                                    repeating = true
+                            if (existingWord == null) {
+                                val word = Word(
+                                    word = sourceText,
+                                    translation = translatedText,
+                                    flashcardId = flashcardId
+                                )
+                                lifecycleScope.launch {
+                                    withContext(Dispatchers.IO) {
+                                        db.flashcardDao().insertWord(word)
+                                    }
                                 }
+                            } else {
+                                Toast.makeText(
+                                    this@AddFlashcard,
+                                    "This word already exists in the flashcard",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
-                            if (!repeating) {
-                                withContext(Dispatchers.IO) {
-                                    db.flashcardDao().insertFlashcard(flashcard)
+                            lifecycleScope.launch {
+                                val flashcards = withContext(Dispatchers.IO) {
+                                    db.flashcardDao().getFlashcardsForUser(1)
                                 }
-                            }
-                        }
-
-                        lifecycleScope.launch {
-                            val flashcards = withContext(Dispatchers.IO) {
-                                db.flashcardDao().getFlashcardsForUser(1)
-                            }
-                            var allWordsAndTranslations = ""
-                            for (flashcard in flashcards) {
-                                if (flashcard.title == titleFlashcard.text.toString()) {
-                                    allWordsAndTranslations += "${flashcard.word} - ${flashcard.translation}\n"
+                                var allWordsAndTranslations = ""
+                                for (flashcard in flashcards) {
+                                    if (flashcard.id == flashcardId) {
+                                        val words = withContext(Dispatchers.IO) {
+                                            db.flashcardDao().getWordsForFlashcard(flashcard.id)
+                                        }
+                                        for (word in words) {
+                                            allWordsAndTranslations += "${word.word} - ${word.translation}\n"
+                                        }
+                                    }
                                 }
+                                translatedWord.text = allWordsAndTranslations
                             }
-                            translatedWord.text = allWordsAndTranslations
                         }
                     }
-
             }
     }
 }
