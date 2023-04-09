@@ -134,6 +134,7 @@ class AddFlashcard : AppCompatActivity() {
                                     }
                                 }
                                 translatedWord.text = allWordsAndTranslations
+                                translatedWord.setBackgroundResource(R.drawable.radius3)
                             }
                         }
                     }

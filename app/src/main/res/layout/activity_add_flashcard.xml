@@ -54,17 +54,16 @@
     <TextView
         android:id="@+id/translatedWord"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/add_button"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
         android:background="@drawable/radius"
-        android:layout_marginTop="20dp"
+        android:fontFamily="@font/mainfont"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="28sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:fontFamily="@font/mainfont"
-        android:padding="16dp"
-        android:textIsSelectable="true" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/add_button"

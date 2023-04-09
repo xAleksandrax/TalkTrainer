@@ -10,4 +10,4 @@
     android:fontFamily="@font/mainfont"
     android:padding="10dp"
     android:layout_below="@+id/photo1"
-    android:layout_marginTop="10dp"/>
+    android:layout_marginTop="20dp"/>

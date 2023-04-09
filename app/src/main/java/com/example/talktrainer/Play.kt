@@ -24,8 +24,7 @@ class Play : AppCompatActivity() {
     private lateinit var englishWord1: Button
     private lateinit var englishWord2: Button
     private lateinit var englishWord3: Button
-//    private lateinit var btnBack: Button
-//    private lateinit var btnTryAgain: Button
+    private lateinit var btnTryAgain: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -160,20 +159,20 @@ class Play : AppCompatActivity() {
 
             container.addView(textViewScore)
 
-//            btnBack = findViewById(R.id.back)
-//            btnTryAgain = findViewById(R.id.tryAgain)
-//
-//            btnBack.setOnClickListener {
-//                setContentView(R.layout.activity_choose)
-//                chooseFlashcard()
-//            }
-//
-//            btnTryAgain.setOnClickListener {
-//                currentPolishWordIndex = 0
-//                score = 0
-//                play()
-//            }
+            btnTryAgain = findViewById(R.id.tryAgain)
+
+            btnTryAgain.setOnClickListener {
+                resetGame()
+            }
         }
 
     }
+
+    private fun resetGame() {
+        setContentView(R.layout.activity_play)
+        currentPolishWordIndex = 0
+        score = 0
+        play()
+    }
+
 }

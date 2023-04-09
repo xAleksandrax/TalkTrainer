@@ -26,42 +26,26 @@
         android:layout_below="@+id/scoreTitle">
     </LinearLayout>
 
-<!--    <Button-->
-<!--        android:id="@+id/tryAgain"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="Try again"-->
-<!--        android:textSize="16sp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:textColor="@color/white"-->
-<!--        app:backgroundTint="#FF8F63"-->
-<!--        android:background="@drawable/button_background"-->
-<!--        android:elevation="4dp"-->
-<!--        android:layout_below="@+id/container_score"/>-->
-
-<!--    <Button-->
-<!--        android:id="@+id/back"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:text="back"-->
-<!--        android:textSize="16sp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:textColor="@color/white"-->
-<!--        app:backgroundTint="#FF8F63"-->
-<!--        android:background="@drawable/button_background"-->
-<!--        android:elevation="4dp"-->
-<!--        android:layout_below="@+id/tryAgain"/>-->
+    <Button
+        android:id="@+id/tryAgain"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/container_score"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button_background"
+        android:elevation="4dp"
+        android:text="Try again"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#FF8F63" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/winner"
-        android:layout_below="@+id/container_score"
-        android:layout_marginTop="200dp"/>
+        android:layout_below="@+id/tryAgain"
+        android:layout_marginTop="100dp"/>
 </RelativeLayout>
