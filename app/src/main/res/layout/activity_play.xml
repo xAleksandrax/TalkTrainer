@@ -14,7 +14,9 @@
         android:background="@drawable/button_background"
         android:elevation="4dp"
         android:padding="20dp"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -22,7 +24,8 @@
         android:layout_below="@+id/polishWord"
         android:background="@drawable/button_background"
         android:padding="20dp"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -30,7 +33,8 @@
         android:layout_below="@+id/englishWord1"
         android:background="@drawable/button_background"
         android:padding="20dp"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -38,7 +42,8 @@
         android:layout_below="@+id/englishWord2"
         android:background="@drawable/button_background"
         android:padding="20dp"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:textSize="20sp"/>
 
     <ImageView
         android:layout_width="match_parent"
