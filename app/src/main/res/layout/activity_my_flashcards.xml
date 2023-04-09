@@ -6,31 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MyFlashcards">
 
-<!--    <TextView-->
-<!--        android:id="@+id/titleFlashcard"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/photo1"-->
-<!--        android:fontFamily="@font/mainfont"-->
-<!--        android:textSize="30sp"-->
-<!--        android:textAlignment="center"/>-->
+    <ImageView
+        android:id="@+id/photo1"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:src="@drawable/add" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/photo1">
 
         <LinearLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/photo1"
-                android:layout_width="match_parent"
-                android:layout_height="155dp"
-                android:src="@drawable/add" />
-
+            android:orientation="vertical"
+            >
         </LinearLayout>
     </ScrollView>
 
