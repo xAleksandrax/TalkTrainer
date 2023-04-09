@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Play">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/polishWord"
+        app:backgroundTint="#FF8F63"
+        android:background="@drawable/button_background"
+        android:elevation="4dp"
+        android:padding="20dp"
+        android:layout_margin="20dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/englishWord1"
+        android:layout_below="@+id/polishWord"
+        android:background="@drawable/button_background"
+        android:padding="20dp"
+        android:layout_margin="20dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/englishWord2"
+        android:layout_below="@+id/englishWord1"
+        android:background="@drawable/button_background"
+        android:padding="20dp"
+        android:layout_margin="20dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/englishWord3"
+        android:layout_below="@+id/englishWord2"
+        android:background="@drawable/button_background"
+        android:padding="20dp"
+        android:layout_margin="20dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/englishWord3"
+        android:src="@drawable/play"/>
+
+</RelativeLayout>

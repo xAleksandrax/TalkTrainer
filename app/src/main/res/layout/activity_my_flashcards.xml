@@ -7,6 +7,7 @@
     tools:context=".MyFlashcards">
 
     <ImageView
+        android:layout_marginTop="15dp"
         android:id="@+id/photo1"
         android:layout_width="match_parent"
         android:layout_height="155dp"
@@ -25,7 +26,4 @@
             >
         </LinearLayout>
     </ScrollView>
-
-
-
 </RelativeLayout>

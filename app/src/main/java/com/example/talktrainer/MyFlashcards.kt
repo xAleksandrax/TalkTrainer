@@ -56,7 +56,6 @@ class MyFlashcards : AppCompatActivity() {
                 textViewTitle.text = flashcard.title
                 textViewTitle.setBackgroundResource(R.drawable.radius3)
                 container.addView(textViewTitle)
-
                 // Pobierz wszystkie słowa dla danej fiszki
                 val words = withContext(Dispatchers.IO) {
                     db.flashcardDao().getWordsForFlashcard(flashcard.id)
