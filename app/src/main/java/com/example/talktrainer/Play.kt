@@ -65,6 +65,7 @@ class Play : AppCompatActivity() {
                         for (word in words) {
                             translations[word.word] = word.translation
                         }
+                        setContentView(R.layout.activity_play)
                         play()
                     }
                 }
@@ -132,6 +133,7 @@ class Play : AppCompatActivity() {
                 score++
                 currentPolishWordIndex++
                 Handler().postDelayed({
+                    setContentView(R.layout.activity_play)
                     play()
                 }, 2000)
             }
@@ -148,6 +150,7 @@ class Play : AppCompatActivity() {
 
                 currentPolishWordIndex++
                 Handler().postDelayed({
+                    setContentView(R.layout.activity_play)
                     play()
                 }, 2000)
             }
@@ -162,6 +165,7 @@ class Play : AppCompatActivity() {
                 score++
                 currentPolishWordIndex++
                 Handler().postDelayed({
+                    setContentView(R.layout.activity_play)
                     play()
                 }, 2000)
             }
@@ -178,6 +182,7 @@ class Play : AppCompatActivity() {
 
                 currentPolishWordIndex++
                 Handler().postDelayed({
+                    setContentView(R.layout.activity_play)
                     play()
                 }, 2000)
             }
@@ -192,6 +197,7 @@ class Play : AppCompatActivity() {
                 score++
                 currentPolishWordIndex++
                 Handler().postDelayed({
+                    setContentView(R.layout.activity_play)
                     play()
                 }, 2000)
             }
@@ -208,6 +214,7 @@ class Play : AppCompatActivity() {
 
                 currentPolishWordIndex++
                 Handler().postDelayed({
+                    setContentView(R.layout.activity_play)
                     play()
                 }, 2000)
             }
