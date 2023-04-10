@@ -1,16 +1,13 @@
-An app for learning languages that allows users to quickly and effectively master a chosen foreign language. The app offers various features that make language learning easier and more enjoyable.
+TalkTrainer is a mobile application for learning English, written in Kotlin and using a SQLite Room database. The application offers many features, including Study, Play, Add flashcard, My flashcards, and Statistics, which enable effective English learning.
 
-Features:
+The Study feature allows users to enter their own translations of English words. This helps in memorizing vocabulary in an effective way, allowing for self-paced learning.
 
-Vocabulary learning - Users can learn words and phrases in a chosen foreign language using various techniques and methods such as flashcards, tests, and games.
+The Play feature is an interactive game that makes learning fun. Users must guess the correct English word based on the given translation. This allows for checking knowledge in practice and consolidating vocabulary.
 
-Grammar - The app also offers grammar lessons, allowing users to learn grammar rules in a practical way.
+The Add flashcard feature allows users to add their own flashcards to the database. This allows users to customize their learning to their needs and preferences by selecting the words they want to learn.
 
-Statistics - The app tracks users' progress and displays statistics such as the number of words learned or test results.
+The My flashcards feature allows users to browse and manage their flashcards in one place. Users can easily access their personalized vocabulary and repeat the words they want to memorize.
 
-Challenges - The app also offers various challenges and rewards to motivate users to study regularly.
+The Statistics feature allows users to track their progress and display their best scores during the Play game. This allows users to monitor their progress and motivates them to continue learning.
 
-Technologies used in the app:
--Kotlin programming language
--Android framework
--Libraries for handling SQLite databases and network connections
+Thanks to the use of the SQLite Room database, the TalkTrainer app offers convenient data storage, allowing users to access their personalized vocabulary and track their progress in learning English. TalkTrainer is an easy-to-use tool that adapts to individual user needs, making it an ideal choice for anyone who wants to learn English.
