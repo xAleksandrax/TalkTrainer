@@ -23,6 +23,7 @@
         android:id="@+id/englishWord1"
         android:layout_below="@+id/polishWord"
         android:background="@drawable/button_background"
+        app:backgroundTint="@color/postMain"
         android:padding="20dp"
         android:layout_margin="20dp"
         android:textSize="20sp"/>
@@ -32,6 +33,7 @@
         android:id="@+id/englishWord2"
         android:layout_below="@+id/englishWord1"
         android:background="@drawable/button_background"
+        app:backgroundTint="@color/postMain"
         android:padding="20dp"
         android:layout_margin="20dp"
         android:textSize="20sp"/>
@@ -41,6 +43,7 @@
         android:id="@+id/englishWord3"
         android:layout_below="@+id/englishWord2"
         android:background="@drawable/button_background"
+        app:backgroundTint="@color/postMain"
         android:padding="20dp"
         android:layout_margin="20dp"
         android:textSize="20sp"/>
