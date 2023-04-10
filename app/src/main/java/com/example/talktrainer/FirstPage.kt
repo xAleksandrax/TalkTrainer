@@ -8,6 +8,7 @@ class FirstPage : AppCompatActivity() {
     private lateinit var addBtn: Button
     private lateinit var myFlashcardBtn: Button
     private lateinit var playButton: Button
+    private lateinit var studyButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -16,6 +17,7 @@ class FirstPage : AppCompatActivity() {
         addBtn = findViewById(R.id.addFlashcard)
         myFlashcardBtn = findViewById(R.id.button1)
         playButton = findViewById(R.id.button3)
+        studyButton = findViewById(R.id.button2)
 
         addBtn.setOnClickListener{
             val intent = Intent(applicationContext, AddFlashcard::class.java)
@@ -29,6 +31,11 @@ class FirstPage : AppCompatActivity() {
 
         playButton.setOnClickListener{
             val intent = Intent(applicationContext, Play::class.java)
+            startActivity(intent)
+        }
+
+        studyButton.setOnClickListener{
+            val intent = Intent(applicationContext, Study::class.java)
             startActivity(intent)
         }
     }
