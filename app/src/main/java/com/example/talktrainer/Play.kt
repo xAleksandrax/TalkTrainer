@@ -82,6 +82,7 @@ class Play : AppCompatActivity() {
         englishWord3 = findViewById(R.id.englishWord3)
 
         val polishWords = translations.keys.toList()
+        val englishWords = translations.values.toMutableList()
         val colorStateList = ContextCompat.getColorStateList(this, R.color.postMain)
         val colorStateList1 = ContextCompat.getColorStateList(this, R.color.rightAnswer)
         val colorStateList2 = ContextCompat.getColorStateList(this, R.color.wrongAnswer)
@@ -90,136 +91,139 @@ class Play : AppCompatActivity() {
         englishWord2.backgroundTintList = colorStateList
         englishWord3.backgroundTintList = colorStateList
 
-        polishWord.text = polishWords[currentPolishWordIndex]
+        if ((currentPolishWordIndex < englishWords.size) && translations.size >= 3)
+        {
+            polishWord.text = polishWords[currentPolishWordIndex]
 
-        val englishWords = translations.values.toMutableList()
-        val correctTranslation = translations[polishWords[currentPolishWordIndex]]
-        val randomIndex = (0..2).random()
 
-        englishWords.remove(correctTranslation)
-        englishWords.shuffle()
+            val correctTranslation = translations[polishWords[currentPolishWordIndex]]
+            val randomIndex = (0..2).random()
 
-        if (englishWords.size >= 3) {
-            when (randomIndex) {
-                0 -> {
-                    englishWord1.text = correctTranslation
-                    englishWord2.text = englishWords[0]
-                    englishWord3.text = englishWords[1]
+            englishWords.remove(correctTranslation)
+            englishWords.shuffle()
+
+            if (englishWords.size >= 3) {
+                when (randomIndex) {
+                    0 -> {
+                        englishWord1.text = correctTranslation
+                        englishWord2.text = englishWords[0]
+                        englishWord3.text = englishWords[1]
+                    }
+                    1 -> {
+                        englishWord1.text = englishWords[0]
+                        englishWord2.text = correctTranslation
+                        englishWord3.text = englishWords[1]
+                    }
+                    2 -> {
+                        englishWord1.text = englishWords[0]
+                        englishWord2.text = englishWords[1]
+                        englishWord3.text = correctTranslation
+                    }
                 }
-                1 -> {
-                    englishWord1.text = englishWords[0]
-                    englishWord2.text = correctTranslation
-                    englishWord3.text = englishWords[1]
+            } else {
+                englishWord1.visibility = View.INVISIBLE
+                englishWord2.visibility = View.INVISIBLE
+                englishWord3.visibility = View.INVISIBLE
+                polishWord.text = "Add at least 3 words to flashcard"
+            }
+
+            englishWord1.setOnClickListener {
+                if (englishWord1.text == correctTranslation) {
+                    englishWord1.backgroundTintList = colorStateList1
+                    englishWord2.backgroundTintList = colorStateList2
+                    englishWord3.backgroundTintList = colorStateList2
+
+                    score++
+                    currentPolishWordIndex++
+                    Handler().postDelayed({
+                        setContentView(R.layout.activity_play)
+                        play()
+                    }, 2000)
                 }
-                2 -> {
-                    englishWord1.text = englishWords[0]
-                    englishWord2.text = englishWords[1]
-                    englishWord3.text = correctTranslation
+                else{
+                    englishWord1.backgroundTintList = colorStateList2
+
+                    if (englishWord2.text == correctTranslation) {
+                        englishWord2.backgroundTintList = colorStateList1
+                        englishWord3.backgroundTintList = colorStateList2
+                    } else {
+                        englishWord2.backgroundTintList = colorStateList2
+                        englishWord3.backgroundTintList = colorStateList1
+                    }
+
+                    currentPolishWordIndex++
+                    Handler().postDelayed({
+                        setContentView(R.layout.activity_play)
+                        play()
+                    }, 2000)
                 }
             }
-        } else {
-            englishWord1.visibility = View.INVISIBLE
-            englishWord2.visibility = View.INVISIBLE
-            englishWord3.visibility = View.INVISIBLE
-            polishWord.text = "Add at least 3 words to flashcard"
-        }
 
-        englishWord1.setOnClickListener {
-            if (englishWord1.text == correctTranslation) {
-                englishWord1.backgroundTintList = colorStateList1
-                englishWord2.backgroundTintList = colorStateList2
-                englishWord3.backgroundTintList = colorStateList2
-
-                score++
-                currentPolishWordIndex++
-                Handler().postDelayed({
-                    setContentView(R.layout.activity_play)
-                    play()
-                }, 2000)
-            }
-            else{
-                englishWord1.backgroundTintList = colorStateList2
-
+            englishWord2.setOnClickListener {
                 if (englishWord2.text == correctTranslation) {
+                    englishWord1.backgroundTintList = colorStateList2
                     englishWord2.backgroundTintList = colorStateList1
                     englishWord3.backgroundTintList = colorStateList2
-                } else {
-                    englishWord2.backgroundTintList = colorStateList2
-                    englishWord3.backgroundTintList = colorStateList1
+
+                    score++
+                    currentPolishWordIndex++
+                    Handler().postDelayed({
+                        setContentView(R.layout.activity_play)
+                        play()
+                    }, 2000)
                 }
+                else{
+                    englishWord2.backgroundTintList = colorStateList2
 
-                currentPolishWordIndex++
-                Handler().postDelayed({
-                    setContentView(R.layout.activity_play)
-                    play()
-                }, 2000)
+                    if (englishWord3.text == correctTranslation) {
+                        englishWord3.backgroundTintList = colorStateList1
+                        englishWord1.backgroundTintList = colorStateList2
+                    } else {
+                        englishWord3.backgroundTintList = colorStateList2
+                        englishWord1.backgroundTintList = colorStateList1
+                    }
+
+                    currentPolishWordIndex++
+                    Handler().postDelayed({
+                        setContentView(R.layout.activity_play)
+                        play()
+                    }, 2000)
+                }
             }
-        }
 
-        englishWord2.setOnClickListener {
-            if (englishWord2.text == correctTranslation) {
-                englishWord1.backgroundTintList = colorStateList2
-                englishWord2.backgroundTintList = colorStateList1
-                englishWord3.backgroundTintList = colorStateList2
-
-                score++
-                currentPolishWordIndex++
-                Handler().postDelayed({
-                    setContentView(R.layout.activity_play)
-                    play()
-                }, 2000)
-            }
-            else{
-                englishWord2.backgroundTintList = colorStateList2
-
+            englishWord3.setOnClickListener {
                 if (englishWord3.text == correctTranslation) {
-                    englishWord3.backgroundTintList = colorStateList1
                     englishWord1.backgroundTintList = colorStateList2
-                } else {
-                    englishWord3.backgroundTintList = colorStateList2
-                    englishWord1.backgroundTintList = colorStateList1
-                }
-
-                currentPolishWordIndex++
-                Handler().postDelayed({
-                    setContentView(R.layout.activity_play)
-                    play()
-                }, 2000)
-            }
-        }
-
-        englishWord3.setOnClickListener {
-            if (englishWord3.text == correctTranslation) {
-                englishWord1.backgroundTintList = colorStateList2
-                englishWord2.backgroundTintList = colorStateList2
-                englishWord3.backgroundTintList = colorStateList1
-
-                score++
-                currentPolishWordIndex++
-                Handler().postDelayed({
-                    setContentView(R.layout.activity_play)
-                    play()
-                }, 2000)
-            }
-            else{
-                englishWord3.backgroundTintList = colorStateList2
-
-                if (englishWord2.text == correctTranslation) {
-                    englishWord2.backgroundTintList = colorStateList1
-                    englishWord1.backgroundTintList = colorStateList2
-                } else {
                     englishWord2.backgroundTintList = colorStateList2
-                    englishWord1.backgroundTintList = colorStateList1
-                }
+                    englishWord3.backgroundTintList = colorStateList1
 
-                currentPolishWordIndex++
-                Handler().postDelayed({
-                    setContentView(R.layout.activity_play)
-                    play()
-                }, 2000)
+                    score++
+                    currentPolishWordIndex++
+                    Handler().postDelayed({
+                        setContentView(R.layout.activity_play)
+                        play()
+                    }, 2000)
+                }
+                else{
+                    englishWord3.backgroundTintList = colorStateList2
+
+                    if (englishWord2.text == correctTranslation) {
+                        englishWord2.backgroundTintList = colorStateList1
+                        englishWord1.backgroundTintList = colorStateList2
+                    } else {
+                        englishWord2.backgroundTintList = colorStateList2
+                        englishWord1.backgroundTintList = colorStateList1
+                    }
+
+                    currentPolishWordIndex++
+                    Handler().postDelayed({
+                        setContentView(R.layout.activity_play)
+                        play()
+                    }, 2000)
+                }
             }
         }
-        if ((currentPolishWordIndex >= englishWords.size) && englishWords.size >= 3){
+        else {
             setContentView(R.layout.activity_score)
             val container = findViewById<LinearLayout>(R.id.container_score)
             val inflater = LayoutInflater.from(this@Play)
