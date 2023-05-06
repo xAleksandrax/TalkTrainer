@@ -127,6 +127,7 @@ class AddFlashcard : AppCompatActivity() {
                                                 val words = withContext(Dispatchers.IO) {
                                                     db.flashcardDao().getWordsForFlashcard(flashcard.id)
                                                 }
+                                                allWordsAndTranslations += "\n"
                                                 for (word in words) {
                                                     allWordsAndTranslations += "${word.word} - ${word.translation}\n"
                                                 }

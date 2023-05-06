@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import java.text.SimpleDateFormat
 import java.util.*
 
 class FlashcardAdapter(private val cursor: Cursor) :
     RecyclerView.Adapter<FlashcardAdapter.FlashcardViewHolder>() {
     private val dateFormatter = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+    private val categoryData = HashMap<String, Int>()
 
     class FlashcardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewFlashcard: TextView = itemView.findViewById(R.id.textViewFlashcard)
@@ -30,11 +35,12 @@ class FlashcardAdapter(private val cursor: Cursor) :
         cursor.moveToPosition(position)
         val flashcard = cursor.getString(cursor.getColumnIndexOrThrow(FlashcardDbHelper.COLUMN_NAME_FLASHCARD))
         val score = cursor.getInt(cursor.getColumnIndexOrThrow(FlashcardDbHelper.COLUMN_NAME_SCORE))
+        val maxScore = cursor.getInt(cursor.getColumnIndexOrThrow(FlashcardDbHelper.COLUMN_NAME_MAX_SCORE))
         val dateMillis = cursor.getLong(cursor.getColumnIndexOrThrow(FlashcardDbHelper.COLUMN_NAME_DATE))
         val date = dateFormatter.format(Date(dateMillis))
 
         holder.textViewFlashcard.text = flashcard
-        holder.textViewScore.text = score.toString()
+        holder.textViewScore.text = "${score}/${maxScore}"
         holder.textViewDate.text = date
 
         // Set different background colors for rows based on the position of the row
@@ -50,3 +56,4 @@ class FlashcardAdapter(private val cursor: Cursor) :
         return cursor.count
     }
 }
+

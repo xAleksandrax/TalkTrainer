@@ -13,6 +13,7 @@ class FlashcardDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         const val COLUMN_NAME_FLASHCARD = "flashcard_name"
         const val COLUMN_NAME_SCORE = "score"
         const val COLUMN_NAME_DATE = "date"
+        const val COLUMN_NAME_MAX_SCORE = "max_score"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -20,7 +21,8 @@ class FlashcardDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_NAME_FLASHCARD TEXT," +
                 "$COLUMN_NAME_SCORE INTEGER," +
-                "$COLUMN_NAME_DATE TEXT" +
+                "$COLUMN_NAME_DATE TEXT," +
+                "$COLUMN_NAME_MAX_SCORE INTEGER" +
                 ")"
         db.execSQL(createTable)
     }

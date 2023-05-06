@@ -94,22 +94,24 @@ class Study : AppCompatActivity() {
                 if (sourceText.isEmpty()) {
                     Toast.makeText(this, "Add translation", Toast.LENGTH_SHORT).show()
                 } else {
-                    if (sourceText == correctTranslation) {
-                        translation.backgroundTintList = colorStateList1
+                    if (correctTranslation != null) {
+                        if (sourceText.lowercase() == correctTranslation.lowercase()) {
+                            translation.backgroundTintList = colorStateList1
 
-                        score++
-                        currentEnglishWordIndex++
-                        Handler().postDelayed({
-                            setContentView(R.layout.activity_study)
-                            learn()
-                        }, 2000)
-                    } else {
-                        translation.backgroundTintList = colorStateList2
-                        currentEnglishWordIndex++
-                        Handler().postDelayed({
-                            setContentView(R.layout.activity_study)
-                            learn()
-                        }, 2000)
+                            score++
+                            currentEnglishWordIndex++
+                            Handler().postDelayed({
+                                setContentView(R.layout.activity_study)
+                                learn()
+                            }, 2000)
+                        } else {
+                            translation.backgroundTintList = colorStateList2
+                            currentEnglishWordIndex++
+                            Handler().postDelayed({
+                                setContentView(R.layout.activity_study)
+                                learn()
+                            }, 2000)
+                        }
                     }
                 }
             }

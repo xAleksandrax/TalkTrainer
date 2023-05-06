@@ -25,7 +25,22 @@ class Statistics : AppCompatActivity() {
 
         val adapter = FlashcardAdapter(cursor)
         recyclerViewData.adapter = adapter
+
+        val gameCounts = getGameCounts()
+        val gamesPlayedText = findViewById<TextView>(R.id.gamesPlayedText)
+        val stringBuilder = StringBuilder()
+        stringBuilder.append("\n")
+        for ((flashcardName, gameCount) in gameCounts) {
+            if(gameCount == 1){
+                stringBuilder.append("$flashcardName: $gameCount game played\n")
+            }
+            else{
+                stringBuilder.append("$flashcardName: $gameCount games played\n")
+            }
+        }
+        gamesPlayedText.text = stringBuilder.toString()
     }
+
 
     private fun readGameData(): Cursor {
         val dbHelper = FlashcardDbHelper(this)
@@ -35,7 +50,8 @@ class Statistics : AppCompatActivity() {
             BaseColumns._ID,
             FlashcardDbHelper.COLUMN_NAME_FLASHCARD,
             FlashcardDbHelper.COLUMN_NAME_SCORE,
-            FlashcardDbHelper.COLUMN_NAME_DATE
+            FlashcardDbHelper.COLUMN_NAME_DATE,
+            FlashcardDbHelper.COLUMN_NAME_MAX_SCORE
         )
 
         val sortOrder = "${FlashcardDbHelper.COLUMN_NAME_SCORE} DESC"
@@ -50,5 +66,34 @@ class Statistics : AppCompatActivity() {
             sortOrder
         )
     }
+
+    private fun getGameCounts(): Map<String, Int> {
+        val dbHelper = FlashcardDbHelper(this)
+        val db = dbHelper.readableDatabase
+
+        val projection = arrayOf(FlashcardDbHelper.COLUMN_NAME_FLASHCARD, "COUNT(*) AS count")
+        val groupBy = FlashcardDbHelper.COLUMN_NAME_FLASHCARD
+
+        val cursor = db.query(
+            FlashcardDbHelper.TABLE_NAME,
+            projection,
+            null,
+            null,
+            groupBy,
+            null,
+            null
+        )
+
+        val gameCounts = mutableMapOf<String, Int>()
+        while (cursor.moveToNext()) {
+            val flashcardName = cursor.getString(cursor.getColumnIndexOrThrow(FlashcardDbHelper.COLUMN_NAME_FLASHCARD))
+            val count = cursor.getInt(cursor.getColumnIndexOrThrow("count"))
+            gameCounts[flashcardName] = count
+        }
+        cursor.close()
+
+        return gameCounts
+    }
+
 }
 
