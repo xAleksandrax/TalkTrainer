@@ -20,7 +20,7 @@ import kotlin.random.Random
 
 class Play : AppCompatActivity() {
 
-    val translations = HashMap<String, String>()
+    private val translations = HashMap<String, String>()
     private lateinit var db: AppDatabase
     private lateinit var polishWord: Button
     private lateinit var englishWord1: Button
@@ -239,7 +239,6 @@ class Play : AppCompatActivity() {
                 resetGame()
             }
         }
-
     }
     private fun resetGame() {
         setContentView(R.layout.activity_play)
@@ -247,5 +246,4 @@ class Play : AppCompatActivity() {
         score = 0
         play()
     }
-
 }

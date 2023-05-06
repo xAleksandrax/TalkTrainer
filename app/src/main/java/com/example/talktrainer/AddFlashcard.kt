@@ -18,6 +18,8 @@ import com.google.mlkit.nl.translate.TranslatorOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Date
+
 
 class AddFlashcard : AppCompatActivity() {
 
@@ -110,31 +112,39 @@ class AddFlashcard : AppCompatActivity() {
                                     withContext(Dispatchers.IO) {
                                         db.flashcardDao().insertWord(word)
                                     }
+                                    Toast.makeText(
+                                        this@AddFlashcard,
+                                        "New word added to the flashcard",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    lifecycleScope.launch {
+                                        val flashcards = withContext(Dispatchers.IO) {
+                                            db.flashcardDao().getFlashcardsForUser(1)
+                                        }
+                                        var allWordsAndTranslations = ""
+                                        for (flashcard in flashcards) {
+                                            if (flashcard.id == flashcardId) {
+                                                val words = withContext(Dispatchers.IO) {
+                                                    db.flashcardDao().getWordsForFlashcard(flashcard.id)
+                                                }
+                                                for (word in words) {
+                                                    allWordsAndTranslations += "${word.word} - ${word.translation}\n"
+                                                }
+                                            }
+                                        }
+                                        translatedWord.text = allWordsAndTranslations
+                                        translatedWord.setBackgroundResource(R.drawable.radius3)
+                                    }
                                 }
                             } else {
+                                titleFlashcard.text.clear()
+                                wordToTranslate.text.clear()
+                                translatedWord.text = ""
                                 Toast.makeText(
                                     this@AddFlashcard,
                                     "This word already exists in the flashcard",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                            }
-                            lifecycleScope.launch {
-                                val flashcards = withContext(Dispatchers.IO) {
-                                    db.flashcardDao().getFlashcardsForUser(1)
-                                }
-                                var allWordsAndTranslations = ""
-                                for (flashcard in flashcards) {
-                                    if (flashcard.id == flashcardId) {
-                                        val words = withContext(Dispatchers.IO) {
-                                            db.flashcardDao().getWordsForFlashcard(flashcard.id)
-                                        }
-                                        for (word in words) {
-                                            allWordsAndTranslations += "${word.word} - ${word.translation}\n"
-                                        }
-                                    }
-                                }
-                                translatedWord.text = allWordsAndTranslations
-                                translatedWord.setBackgroundResource(R.drawable.radius3)
                             }
                         }
                     }

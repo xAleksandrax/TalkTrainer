@@ -1,83 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddFlashcard">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="213dp"
-        android:layout_marginTop="12dp"
-        app:srcCompat="@drawable/travel"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="2dp" />
-
-    <EditText
-        android:id="@+id/title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#FAE3DA"
-        android:background="@drawable/button_background"
-        android:drawableStart="@drawable/baseline_person_24"
-        android:drawablePadding="15dp"
-        android:hint="Title"
-        android:padding="20dp"
-        android:ems="10"/>
+        tools:context=".AddFlashcard">
 
-    <EditText
-        android:id="@+id/word"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#FAE3DA"
-        android:drawableStart="@drawable/baseline_lock_24"
-        android:drawablePadding="15dp"
-        android:background="@drawable/button_background"
-        android:hint="Word"
-        android:inputType="text"
-        android:padding="20dp"
-        android:ems="10"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="213dp"
+            android:layout_marginTop="12dp"
+            app:srcCompat="@drawable/travel"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="2dp" />
 
-    <TextView
-        android:id="@+id/translatedWord"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/add_button"
-        android:layout_marginTop="30dp"
-        android:padding="10dp"
-        android:background="@drawable/radius"
-        android:fontFamily="@font/mainfont"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#FAE3DA"
+            android:background="@drawable/button_background"
+            android:drawableStart="@drawable/baseline_person_24"
+            android:drawablePadding="15dp"
+            android:hint="Title"
+            android:padding="20dp"
+            android:ems="10"/>
 
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/white"
-        app:backgroundTint="#FF8F63"
-        android:background="@drawable/button_background"
-        android:elevation="4dp"
-        android:drawableLeft="@drawable/baseline_add_24"
-        android:text="Add"
-        android:textStyle="bold"
-        android:layout_below="@id/word"
-        android:layout_centerHorizontal="true"/>
+        <EditText
+            android:id="@+id/word"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#FAE3DA"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="15dp"
+            android:background="@drawable/button_background"
+            android:hint="Word"
+            android:inputType="text"
+            android:padding="20dp"
+            android:ems="10"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/translatedWord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_button"
+            android:layout_marginTop="30dp"
+            android:padding="10dp"
+            android:background="@drawable/radius"
+            android:fontFamily="@font/mainfont"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            app:backgroundTint="#FF8F63"
+            android:background="@drawable/button_background"
+            android:elevation="4dp"
+            android:drawableLeft="@drawable/baseline_add_24"
+            android:text="Add"
+            android:textStyle="bold"
+            android:layout_below="@id/word"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+</ScrollView>

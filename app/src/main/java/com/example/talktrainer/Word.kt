@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "words", foreignKeys = [ForeignKey(entity = Flashcard::class, parentColumns = ["id"], childColumns = ["flashcard_id"], onDelete = ForeignKey.CASCADE)])
 data class Word(
