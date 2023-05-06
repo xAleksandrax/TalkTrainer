@@ -1,5 +1,6 @@
 package com.example.talktrainer
 
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -38,6 +39,7 @@ class Play : AppCompatActivity() {
         chooseFlashcard()
     }
 
+    private var lastFlashcard: String = "N/A"
     private fun chooseFlashcard() {
         val inflater = LayoutInflater.from(this@Play)
         val container = findViewById<LinearLayout>(R.id.container)
@@ -55,6 +57,7 @@ class Play : AppCompatActivity() {
                 container.addView(textViewTitle)
 
                 textViewTitle.setOnClickListener {
+                    lastFlashcard = textViewTitle.text.toString()
                     setContentView(R.layout.activity_play)
 
                     lifecycleScope.launch {
@@ -233,6 +236,8 @@ class Play : AppCompatActivity() {
 
             container.addView(textViewScore)
 
+            insertGameData() // insert score data into database
+
             btnTryAgain = findViewById(R.id.tryAgain)
 
             btnTryAgain.setOnClickListener {
@@ -245,5 +250,19 @@ class Play : AppCompatActivity() {
         currentPolishWordIndex = 0
         score = 0
         play()
+    }
+
+    private fun insertGameData() {
+        val dbHelper = FlashcardDbHelper(this)
+        val db = dbHelper.writableDatabase
+
+        val values = ContentValues().apply {
+            put(FlashcardDbHelper.COLUMN_NAME_FLASHCARD, lastFlashcard)
+            put(FlashcardDbHelper.COLUMN_NAME_SCORE, score)
+            put(FlashcardDbHelper.COLUMN_NAME_DATE, System.currentTimeMillis())
+        }
+
+        db.insert(FlashcardDbHelper.TABLE_NAME, null, values)
+        db.close()
     }
 }
