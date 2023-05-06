@@ -8,6 +8,7 @@ import android.widget.ImageView
 
 class FirstPage : AppCompatActivity() {
     private lateinit var addBtn: Button
+    private lateinit var statsBtn: Button
     private lateinit var myFlashcardBtn: Button
     private lateinit var playButton: Button
     private lateinit var studyButton: Button
@@ -18,6 +19,7 @@ class FirstPage : AppCompatActivity() {
         setContentView(R.layout.activity_first_page)
 
         addBtn = findViewById(R.id.addFlashcard)
+        statsBtn = findViewById(R.id.button4)
         myFlashcardBtn = findViewById(R.id.button1)
         playButton = findViewById(R.id.button3)
         studyButton = findViewById(R.id.button2)
@@ -45,6 +47,11 @@ class FirstPage : AppCompatActivity() {
 
         profileImg.setOnClickListener{
             val intent = Intent(applicationContext, com.example.talktrainer.Notification::class.java)
+            startActivity(intent)
+        }
+
+        statsBtn.setOnClickListener{
+            val intent = Intent(applicationContext, Statistics::class.java)
             startActivity(intent)
         }
     }

@@ -101,7 +101,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:text="Ranking"
+        android:text="Statistics"
         android:textSize="25dp"
         android:fontFamily="@font/mainfont"
         android:background="@drawable/game_image"
